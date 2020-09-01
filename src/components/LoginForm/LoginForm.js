@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-//import TokenService from '../../services/token-service';
-//import AuthApiService from'../../services/auth-api-service';
+import TokenService from '../../services/token-service';
+import AuthApiService from'../../services/auth-api-service';
 import {Button, Input} from '../Utils/Utils';
 
 export default class LoginForm extends Component {
@@ -15,10 +15,19 @@ export default class LoginForm extends Component {
         this.setState({ error: null})
         const { user_name, password } = e.target
 
-        user_name.value = ''
-        password.value = ''
-        //TokenService.saveAuthToken()
-        this.props.onLoginSucess()
+        AuthApiService.postLogin({
+          user_name: user_name.value,
+          password: password.value
+        })
+          .then(res => {
+            user_name.value = ''
+            password.value = ''
+            TokenService.saveAuthToken(res.authToken)
+            this.props.onLoginSucess()
+          })
+          .catch(res => {
+            this.setState({error: res.error})
+          })
     }
 
     render() {

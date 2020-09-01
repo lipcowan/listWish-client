@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route} from 'react-router-dom';
 import Header from '../Header/Header';
-import PrivateRoute from '../Utils/PrivateRoute';
-import PublicRoute from '../Utils/PublicRoute';
-import ListWishMain from '../../routes/ListWishPage/ListWishMain';
+// import PrivateRoute from '../Utils/PrivateRoute';
+// import PublicRoute from '../Utils/PublicRoute';
+import ListWishPage from '../../routes/ListWishPage/ListWishPage';
 
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
            <Route
              exact
              path={'/'}
-             component={ListWishMain}
+             component={ListWishPage}
            />
            {/* <PublicRoute />
            <PrivateRoute /> */}
