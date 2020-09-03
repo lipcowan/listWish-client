@@ -40,7 +40,7 @@ export class ListProvider extends Component {
     }
 
     setWishes = wishes => {
-        this.setState({wishes})
+        this.setState([wishes])
     }
 
     clearList = () => {

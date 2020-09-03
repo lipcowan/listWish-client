@@ -23,7 +23,7 @@ export default class ListWish extends Component {
     }
 
     componentWillUnmount() {
-        this.context.clearArticle()
+        this.context.clearList()
     }
 
     renderList() {
