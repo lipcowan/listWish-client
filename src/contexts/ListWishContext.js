@@ -30,7 +30,6 @@ export class ListWishProvider extends Component {
     }
 
     render() {
-        console.log(this.props.children)
         const value = {
             listWishList: this.state.listWishList,
             error: this.state.error,

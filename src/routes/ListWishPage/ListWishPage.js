@@ -26,7 +26,6 @@ export default class ListWishPage extends Component {
 
     render() {
         const { error } = this.context
-        console.log(this.context.setListWishList, 'Hello')
         return (
             <Section list className='ListWishPage'>
                 {error
