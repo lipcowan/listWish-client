@@ -1,0 +1,36 @@
+.ListWishList {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #3f455038;
+    font-size: smaller;
+    display: block;
+    padding: 10px 10px 0;
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+  }
+  
+  .ListWishList:hover {
+    cursor: pointer;
+    background-color: #f7f8f9;
+  }
+  
+  .ListWishList,
+  .ListWishList:visited {
+    color: #555;
+  }
+  
+  .ListWishList__header {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ListWishList__heading {
+    margin: 0;
+  }
+
+  .ListWishList__description {
+      font-style: italic;
+      color: rgb(27, 32, 52)
+  }
+  

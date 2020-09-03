@@ -15,8 +15,8 @@ export default class ListWishPage extends Component {
     }
 
     renderLists() {
-        const { ListWishList = []} = this.context
-        return ListWishList.map(list => 
+        const { listWishList = []} = this.context
+        return listWishList.map(list => 
           <ListWishList
             key={list.id}
             list={list}
@@ -26,6 +26,7 @@ export default class ListWishPage extends Component {
 
     render() {
         const { error } = this.context
+        console.log(this.context.setListWishList, 'Hello')
         return (
             <Section list className='ListWishPage'>
                 {error

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import './ListWishList.css'
 
 
 export default class ListWishList extends Component {
@@ -8,12 +9,12 @@ export default class ListWishList extends Component {
 
         return (
             <Link to={`/list/${list.id}`} className='ListWishList'>
-                <div className='ListWishList__details'>
-                    <div className='ListWishList__text'>
-                        <h2 className='ListWishList__heading'>{list.list_title}</h2>
-                        <p className='ListWishList__description'>{list.list_description}</p>
-                    </div>
-                </div>
+                <header className='ListWishList__header'>
+                    <h2 className='ListWishList__heading'>
+                        {list.list_title}</h2>
+                </header>
+                <p className='ListWishList__description'>
+                            {list.list_description}</p>
             </Link>
         )    
     }

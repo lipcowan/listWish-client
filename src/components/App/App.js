@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, Route} from 'react-router-dom';
 import Header from '../Header/Header';
-// import PrivateRoute from '../Utils/PrivateRoute';
-// import PublicRoute from '../Utils/PublicRoute';
+import PrivateRoute from '../Utils/PrivateRoute';
+import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import ListWishPage from '../../routes/ListWishPage/ListWishPage';
+import ListWish from '../../routes/ListWish/ListWish';
+import LoginPage from '../../routes/LoginPage/LoginPage';
+import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
+import './App.css';
+
 
 
 class App extends Component {
@@ -28,8 +34,21 @@ class App extends Component {
              path={'/'}
              component={ListWishPage}
            />
-           {/* <PublicRoute />
-           <PrivateRoute /> */}
+           <PublicOnlyRoute
+             path={'/login'}
+             component={LoginPage}
+           />
+           <PublicOnlyRoute
+             path={'/register'}
+             component={RegistrationPage}
+           />
+           <PrivateRoute
+             path={'/list/:listId'}
+             component={ListWish}
+           />
+           <Route
+             component={NotFoundPage}
+           />
           </Switch>
         </main>
       </div>
