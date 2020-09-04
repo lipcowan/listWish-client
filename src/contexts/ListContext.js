@@ -23,6 +23,7 @@ export default ListContext
 export class ListProvider extends Component {
     state = {
         list: nullList,
+        wishes: [],
         error: null
     };
 
@@ -36,11 +37,11 @@ export class ListProvider extends Component {
     }
 
     setList = list => {
-        this.setState({list})
+        this.setState({list: list})
     }
 
     setWishes = wishes => {
-        this.setState([wishes])
+        this.setState({wishes: wishes})
     }
 
     clearList = () => {

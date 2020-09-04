@@ -77,7 +77,7 @@ function ListWishes({ wishes = []}) {
                       {wish.wish_title}
                   </p>
                   <p className='ListWish__wish-url'>
-                      {wish.wish_url}
+                      {wish.wish_url} 
                   </p>
               </li>
             )}
