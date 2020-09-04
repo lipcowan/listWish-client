@@ -5,7 +5,7 @@ import {Button, Input} from '../Utils/Utils';
 
 export default class LoginForm extends Component {
     static defaultProps= {
-        onLoginSucess: () => {}
+        onLoginSuccess: () => {}
     }
 
     state = { error: null}
@@ -23,7 +23,7 @@ export default class LoginForm extends Component {
             user_name.value = ''
             password.value = ''
             TokenService.saveAuthToken(res.authToken)
-            this.props.onLoginSucess()
+            this.props.onLoginSuccess()
           })
           .catch(res => {
             this.setState({error: res.error})
