@@ -6,16 +6,25 @@ export const nullList = {
     user: {}
 }
 
+export const nullWish = {
+    wish_title: '',
+    wish_url: '',
+    list_id: 1,
+    user: {},
+
+}
+
 const ListContext = React.createContext({
     list: nullList,
-    wishes: [],
+    wishes: [nullWish, ],
     error: null,
     setError: () => {},
     clearError: () => {},
     setList: () => {},
     clearList: () => {},
     setWishes: () => {},
-    addWish: () => {}
+    addWish: () => {},
+    updateWish: () => {}
 })
 
 export default ListContext
@@ -23,7 +32,7 @@ export default ListContext
 export class ListProvider extends Component {
     state = {
         list: nullList,
-        wishes: [],
+        wishes: [nullWish, ],
         error: null
     };
 
@@ -56,6 +65,8 @@ export class ListProvider extends Component {
         ])
     }
 
+    updateWish = () => {} ;
+
     render() {
         const value = {
             list: this.state.list,
@@ -67,6 +78,7 @@ export class ListProvider extends Component {
             setWishes: this.setWishes,
             clearList: this.clearList,
             addWish: this.addWish,
+            updateWish: this.updateWish,
         }
         return (
             <ListContext.Provider value={value}>

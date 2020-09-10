@@ -12,7 +12,15 @@ const ListApiService = {
               ? res.json().then(e => Promise.reject(e))
               : res.json()
         )
-        // .then(this.setListWishList)
+    },
+
+    postList(title, description) {
+      return fetch(`${config.API_ENDPOINT}/lists`, {
+          headers: {
+              'content-type': 'application/json',
+              'authorization': `bearer ${TokenService.getAuthToken()}`
+          }
+      })
     },
 
     getList(listId) {
@@ -59,6 +67,27 @@ const ListApiService = {
               ? res.json().then(e => Promise.reject(e))
               : res.json()
           )
+    },
+
+    editWish(listId, wishId, title, url) {
+        return fetch(`${config.API_ENDPOINT}/wishes/${wishId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            body: JSON.stringify({
+                id: wishId,
+                wish_title: title,
+                wish_url: url,
+                list_id: listId
+            }),  
+        })
+          .then(res => 
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : null
+            )
     }
 }
 

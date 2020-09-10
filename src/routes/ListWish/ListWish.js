@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
-import ListContext /*, {nullList} */ from '../../contexts/ListContext'
+import ListContext from '../../contexts/ListContext'
 import ListApiService from '../../services/list-api-service'
 import WishForm from '../../components/WishForm/WishForm'
+import Wish from '../../components/Wish/Wish'
+// import EditWishForm from '../../components/WishForm/EditWishForm'
 import { Hyph, Section } from '../../components/Utils/Utils'
 
 export default class ListWish extends Component {
@@ -33,8 +35,6 @@ export default class ListWish extends Component {
           <Hyph />
           <p>{list.list_description}</p>
           <Hyph/>
-          {/* <ListAuthor list={list}/>
-          <Hyph /> */}
           <ListWishes wishes={wishes}/>
           <WishForm />
         </>
@@ -60,26 +60,11 @@ export default class ListWish extends Component {
     }
 }
 
-// function ListAuthor({list = nullList}) {
-//     return (
-//       <span className='ListWish__author'>
-//         {list.user.preferred_name}
-//       </span>
-//     )
-// }
-
 function ListWishes({ wishes = []}) {
     return (
         <ul className='ListWish__wishes'>
             {wishes.map(wish => 
-              <li key={wish.id} className='ListWish__wish'>
-                  <p className='ListWish__wish_title'>
-                      {wish.wish_title}
-                  </p>
-                  <p className='ListWish__wish-url'>
-                      {wish.wish_url} 
-                  </p>
-              </li>
+              <Wish key={wish.id} id={wish.id} title={wish.wish_title} url={wish.wish_url}/>
             )}
         </ul>
     )
