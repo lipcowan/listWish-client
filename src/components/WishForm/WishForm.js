@@ -5,6 +5,7 @@ import { Button, Input, Required } from '../Utils/Utils'
 
 
 export default class WishForm extends Component {
+
     static contextType = ListContext
 
     handleSubmit = e => {
@@ -18,41 +19,45 @@ export default class WishForm extends Component {
               wish_title.value = ''
               wish_url.value = ''
           })
+          .then(this.props.addWish)
           .catch(this.context.setError)
     }
 
+    
+
+    
     render() {
-        return (
-            <form
-              className='WishForm'
-              onSubmit={this.handleSubmit}
-            >
-              <div className='wish_title'>
-                  <label htmlFor='WishForm__wish_title'>
-                      Wish Title: <Required/>
-                  </label>
-                  <Input 
-                    name='wish_title'
-                    type='text'
-                    required
-                    id='WishForm__wish_title'>
-                  </Input>
-              </div>
-              <div className='wish_url'>
-                  <label htmlFor='WishForm__wish_url'>
-                      Wish URL: 
-                  </label>
-                  <Input
-                    name='wish_url'
-                    type='text'
-                    id='WishForm__wish_url'>
-                  </Input>
-              </div>
-              <Button type='submit'>
-                  Make a wish 
-              </Button>
-            </form>
-        )
+            return (
+                <form
+                        className='WishForm'
+                        onSubmit={this.handleSubmit}
+                        >
+                        <div className='wish_title'>
+                            <label htmlFor='WishForm__wish_title'>
+                                Wish Title: <Required/>
+                            </label>
+                            <Input 
+                            name='wish_title'
+                            type='text'
+                            required
+                            id='WishForm__wish_title'>
+                            </Input>
+                        </div>
+                        <div className='wish_url'>
+                            <label htmlFor='WishForm__wish_url'>
+                                Wish URL: 
+                            </label>
+                            <Input
+                            name='wish_url'
+                            type='text'
+                            id='WishForm__wish_url'>
+                            </Input>
+                        </div>
+                        <Button type='submit'>
+                            Make a wish 
+                        </Button>
+                        </form>
+            )
     }
 }
 

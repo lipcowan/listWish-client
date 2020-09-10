@@ -7,7 +7,7 @@ export function NiceDate({ date, format='EEEE MMMM do YYYY'}) {
 }
 
 export function Hyph() {
-    return <span className='Hyph'>{' - '}</span>
+    return <span className='Hyph'>{'   -   '}</span>
 }
 
 export function Button({ className, ...props}) {

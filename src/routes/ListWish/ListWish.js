@@ -7,6 +7,10 @@ import Wish from '../../components/Wish/Wish'
 import { Hyph, Section } from '../../components/Utils/Utils'
 
 export default class ListWish extends Component {
+    state = {
+        add: false,
+    }
+
     static defaultProps = {
         match: { params: {} },
     }
@@ -28,15 +32,22 @@ export default class ListWish extends Component {
         this.context.clearList()
     }
 
+    addWishButtonHandler = () => {
+        !this.state.add
+                ? this.setState({add: true})
+                : this.setState({add: false})
+    }
+ 
     renderList() {
         const { list, wishes } = this.context
         return <>
           <h2>{list.list_title}</h2>
-          <Hyph />
           <p>{list.list_description}</p>
           <Hyph/>
           <ListWishes wishes={wishes}/>
-          <WishForm />
+          <Hyph/>
+          <button onClick={() => this.addWishButtonHandler()}> + Add New Wish </button>
+          {(this.state.add) ? <WishForm addWish={this.addWishButtonHandler}/> : null }
         </>
     }
 
