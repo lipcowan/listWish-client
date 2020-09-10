@@ -9,7 +9,6 @@ export const nullList = {
 export const nullWish = {
     wish_title: '',
     wish_url: '',
-    list_id: 1,
     user: {},
 
 }
@@ -24,7 +23,8 @@ const ListContext = React.createContext({
     clearList: () => {},
     setWishes: () => {},
     addWish: () => {},
-    updateWish: () => {}
+    updateWish: () => {},
+    deleteWish: () => {},
 })
 
 export default ListContext
@@ -65,7 +65,9 @@ export class ListProvider extends Component {
         ])
     }
 
-    updateWish = () => {} ;
+    updateWish = () => {} 
+
+    deleteWish = () => {}
 
     render() {
         const value = {
@@ -79,6 +81,7 @@ export class ListProvider extends Component {
             clearList: this.clearList,
             addWish: this.addWish,
             updateWish: this.updateWish,
+            deleteWish: this.deleteWish,
         }
         return (
             <ListContext.Provider value={value}>

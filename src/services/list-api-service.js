@@ -16,11 +16,21 @@ const ListApiService = {
 
     postList(title, description) {
       return fetch(`${config.API_ENDPOINT}/lists`, {
+          method: 'POST',
           headers: {
               'content-type': 'application/json',
               'authorization': `bearer ${TokenService.getAuthToken()}`
-          }
+          },
+          body: JSON.stringify({
+              list_title: title,
+              list_description: description,
+          }),
       })
+        .then(res => 
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : res.json()
+            )
     },
 
     getList(listId) {
@@ -34,6 +44,20 @@ const ListApiService = {
               ? res.json().then(e => Promise.reject(e))
               : res.json()
           )
+    },
+    
+    deleteList(listId) {
+      return fetch(`${config.API_ENDPOINT}/lists/${listId}`, {
+        headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`
+        },
+      })
+      //returning 204 or 404
+        .then(res => 
+           (!res.ok)
+             ? res.json().then(e => Promise.reject(e))
+             : res.end()  
+        )
     },
 
     getListWishes(listId) {

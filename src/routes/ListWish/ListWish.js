@@ -3,8 +3,7 @@ import ListContext from '../../contexts/ListContext'
 import ListApiService from '../../services/list-api-service'
 import WishForm from '../../components/WishForm/WishForm'
 import Wish from '../../components/Wish/Wish'
-// import EditWishForm from '../../components/WishForm/EditWishForm'
-import { Hyph, Section } from '../../components/Utils/Utils'
+import { Hyph, Section, Button } from '../../components/Utils/Utils'
 
 export default class ListWish extends Component {
     state = {
@@ -46,7 +45,7 @@ export default class ListWish extends Component {
           <Hyph/>
           <ListWishes wishes={wishes}/>
           <Hyph/>
-          <button onClick={() => this.addWishButtonHandler()}> + Add New Wish </button>
+          <Button onClick={() => this.addWishButtonHandler()}> + Add New Wish </Button>
           {(this.state.add) ? <WishForm addWish={this.addWishButtonHandler}/> : null }
         </>
     }

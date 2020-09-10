@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 
+
 const ListWishContext = React.createContext({
     listWishList: [],
     error: null,
     setError: () => {},
     clearError: () => {},
     setListWishList: () => {},
+    addList: () => {},
 })
 
 export default ListWishContext
@@ -29,6 +31,13 @@ export class ListWishProvider extends Component {
         this.setState({ error: null})
     }
 
+    addList = list => {
+        this.setListWishList([
+            ...this.state.listWishList,
+            list
+        ])
+    }
+
     render() {
         const value = {
             listWishList: this.state.listWishList,
@@ -36,6 +45,7 @@ export class ListWishProvider extends Component {
             setError: this.setError,
             clearError: this.clearError,
             setListWishList: this.setListWishList,
+            addList: this.addList,
         }
         return (
             <ListWishContext.Provider value={value}>

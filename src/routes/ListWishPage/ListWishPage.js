@@ -1,37 +1,62 @@
-import React, {Component} from 'react'
-import ListWishContext from '../../contexts/ListWishContext'
-import ListApiService from '../../services/list-api-service'
-import {Section} from '../../components/Utils/Utils'
-import ListWishList from '../../components/ListWishList/ListWishList'
+import React, { Component } from "react";
+import ListWishContext from "../../contexts/ListWishContext";
+import ListApiService from "../../services/list-api-service";
+import { Section, Button, Hyph } from "../../components/Utils/Utils";
+import ListWishList from "../../components/ListWishList/ListWishList";
+import ListForm from "../../components/ListForm/ListForm";
 
 export default class ListWishPage extends Component {
-    static contextType = ListWishContext
+  state = {
+    add: false,
+  };
 
-    componentDidMount() {
-        this.context.clearError()
-        ListApiService.getLists()
-          .then(this.context.setListWishList)
-          .catch(this.context.setError)
-    }
+  static contextType = ListWishContext;
 
-    renderLists() {
-        const { listWishList = []} = this.context
-        return listWishList.map(list => 
-          <ListWishList
-            key={list.id}
-            list={list}
-          />    
-        )
-    }
+  componentDidMount() {
+    this.context.clearError();
+    ListApiService.getLists()
+      .then(this.context.setListWishList)
+      .catch(this.context.setError);
+  }
 
-    render() {
-        const { error } = this.context
-        return (
-            <Section list className='ListWishPage'>
-                {error
-                  ? <p className='red'>There was an error, try again</p>
-                  : this.renderLists()}
-            </Section>
-        )
-    }
+  addListButtonHandler = () => {
+    !this.state.add
+      ? this.setState({ add: true })
+      : this.setState({ add: false });
+  };
+
+  deleteListButtonHandler = () => {
+    ListApiService.deleteList()
+    
+  }
+
+  renderLists() {
+    const { listWishList = [] } = this.context;
+    return listWishList.map((list) => (
+      <ListWishList key={list.id} list={list} />
+    ));
+  }
+
+  render() {
+    const { error } = this.context;
+    return (
+      <>
+        <Section list className="ListWishPage">
+          {error ? (
+            <p className="red">There was an error, try again</p>
+          ) : (
+            this.renderLists()
+          )}
+        </Section>
+        <Hyph />
+        <Button onClick={() => this.addListButtonHandler()}>
+          {" "}
+          + Add New List
+        </Button>
+        {this.state.add ? (
+          <ListForm addList={this.addListsButtonHandler} />
+        ) : null}
+      </>
+    );
+  }
 }
