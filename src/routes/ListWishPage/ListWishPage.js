@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ListWishContext from "../../contexts/ListWishContext";
 import ListApiService from "../../services/list-api-service";
-import { Section, Button, Hyph } from "../../components/Utils/Utils";
+import { Section, Button } from "../../components/Utils/Utils";
 import ListWishList from "../../components/ListWishList/ListWishList";
 import ListForm from "../../components/ListForm/ListForm";
+import './ListWishPage.css'
 
 export default class ListWishPage extends Component {
   state = {
@@ -54,13 +55,14 @@ export default class ListWishPage extends Component {
             this.renderLists()
           )}
         </Section>
-        <Hyph />
-        <Button onClick={() => this.addListButtonHandler()}>
+        <Section className='ListWishPage__ButtonAndFormContainer'>
+        <Button className='Button__AddList' onClick={() => this.addListButtonHandler()}>
           + Add New List
         </Button>
         {this.state.add ? (
           <ListForm addedList={this.addedList} addList={this.addListsButtonHandler} />
         ) : null}
+        </Section>
       </>
     );
   }

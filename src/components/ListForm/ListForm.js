@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ListWishContext from "../../contexts/ListWishContext";
 import ListApiService from "../../services/list-api-service";
-import { Button, Input, Required, Hyph } from "../Utils/Utils";
+import { Button, Input, Required } from "../Utils/Utils";
+import './ListForm.css'
 
 export default class ListForm extends Component {
   static contextType = ListWishContext;
@@ -23,7 +24,7 @@ export default class ListForm extends Component {
   render() {
     return (
       <form className="ListForm" onSubmit={this.handleSubmit}>
-        <div className="List_title">
+        <div className="List_Title">
           <label htmlFor="ListForm__list_title">
             List Title: <Required />
           </label>
@@ -44,8 +45,7 @@ export default class ListForm extends Component {
             id="ListForm__list_description"
           ></Input>
         </div>
-        <Hyph />
-        <Button type="submit">Create New List</Button>
+        <Button className='Button__CreateList' type="submit">Create New List</Button>
       </form>
     );
   }

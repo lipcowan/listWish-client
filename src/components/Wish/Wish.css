@@ -1,0 +1,10 @@
+.Button__EditWish{
+    background-color: rgba(228, 228, 250, 0.831);
+    border: none;
+    color: rgb(37, 35, 58);
+    font-size: 10px;
+  }
+  .ListWish__wish{
+      display: flex;
+      flex-direction: column;
+  }

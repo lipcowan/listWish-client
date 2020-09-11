@@ -1,0 +1,13 @@
+.Button__AddList{
+    background-color: rgba(228, 228, 250, 0.831);
+    border: none;
+    color: rgb(37, 35, 58);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+.ListWishPage__ButtonAndFormContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

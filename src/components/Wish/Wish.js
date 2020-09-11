@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ListContext from '../../contexts/ListContext'
 import {Button} from '../../components/Utils/Utils'
 import EditWishForm from '../../components/WishForm/EditWishForm'
-import ListApiService from '../../services/list-api-service'
+//import ListApiService from '../../services/list-api-service'
 
 
 export default class Wish extends Component {

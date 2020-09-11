@@ -17,8 +17,7 @@ export default class ListWishList extends Component {
 
 
         return (
-            <>
-            <Button className='Button__DeleteList'  onClick={e => this.deleteListButtonHandler(list.id)}>Delete List</Button>
+            <div className='ListWishList__Container'>
             <Link to={`/list/${list.id}`} className='ListWishList'>
                 <header className='ListWishList__header'>
                     <h2 className='ListWishList__heading'>
@@ -27,7 +26,8 @@ export default class ListWishList extends Component {
                 <p className='ListWishList__description'>
                             {list.list_description}</p>
             </Link>
-            </>
+            <Button className='Button__DeleteList'  onClick={e => this.deleteListButtonHandler(list.id)}>Delete List</Button>
+            </div>
         )    
     }
 }
