@@ -4,6 +4,7 @@ import ListApiService from "../../services/list-api-service";
 import { Section, Button } from "../../components/Utils/Utils";
 import ListWishList from "../../components/ListWishList/ListWishList";
 import ListForm from "../../components/ListForm/ListForm";
+import TokenService from '../../services/token-service'
 import './ListWishPage.css'
 
 export default class ListWishPage extends Component {
@@ -44,6 +45,19 @@ export default class ListWishPage extends Component {
     ));
   }
 
+  renderAddButton() {
+    if (TokenService.hasAuthToken())
+       return (
+        <Button className='Button__AddList' onClick={() => this.addListButtonHandler()}>
+          + Add New List
+        </Button>
+      )
+    else 
+      return (
+        <p className='AddPlaceHolder'>Please login or create an account to add a new list</p>
+      )
+  }
+
   render() {
     const { error } = this.context;
     return (
@@ -56,9 +70,7 @@ export default class ListWishPage extends Component {
           )}
         </Section>
         <Section className='ListWishPage__ButtonAndFormContainer'>
-        <Button className='Button__AddList' onClick={() => this.addListButtonHandler()}>
-          + Add New List
-        </Button>
+        <this.renderAddButton/>
         {this.state.add ? (
           <ListForm addedList={this.addedList} addList={this.addListsButtonHandler} />
         ) : null}

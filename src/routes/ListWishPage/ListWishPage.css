@@ -11,3 +11,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.AddPlaceHolder{
+  text-align: center;
+  font-weight: 300;
+}

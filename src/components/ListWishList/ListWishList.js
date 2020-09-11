@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {Button} from '../Utils/Utils'
 import ListApiService from '../../services/list-api-service'
+import TokenService from '../../services/token-service'
 import './ListWishList.css'
+import { isThisHour } from 'date-fns';
 
 
 export default class ListWishList extends Component {
@@ -11,6 +13,13 @@ export default class ListWishList extends Component {
         ListApiService.deleteList(listId)
         .then(this.props.onDelete)
       }
+
+    renderDeleteButton(list) {
+        if (TokenService.hasAuthToken()) 
+        return (<Button className='Button__DeleteList'  onClick={e => this.deleteListButtonHandler(list.id)}>Delete List</Button>) 
+        else
+        return <> </> 
+    }
 
     render() {
         const { list } = this.props
@@ -26,7 +35,7 @@ export default class ListWishList extends Component {
                 <p className='ListWishList__description'>
                             {list.list_description}</p>
             </Link>
-            <Button className='Button__DeleteList'  onClick={e => this.deleteListButtonHandler(list.id)}>Delete List</Button>
+            <this.renderDeleteButton list={this.props.list} />
             </div>
         )    
     }
