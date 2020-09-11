@@ -25,15 +25,21 @@ export default class ListWishPage extends Component {
       : this.setState({ add: false });
   };
 
-  deleteListButtonHandler = () => {
-    ListApiService.deleteList()
-    
+  addedList = () => {
+    this.setState({add: false})
   }
+
+  refreshLists = () => {
+    ListApiService.getLists()
+      .then(this.context.setListWishList)
+      .catch(this.context.setError)
+  }
+  
 
   renderLists() {
     const { listWishList = [] } = this.context;
     return listWishList.map((list) => (
-      <ListWishList key={list.id} list={list} />
+      <ListWishList onDelete={this.refreshLists} key={list.id} list={list} />
     ));
   }
 
@@ -50,11 +56,10 @@ export default class ListWishPage extends Component {
         </Section>
         <Hyph />
         <Button onClick={() => this.addListButtonHandler()}>
-          {" "}
           + Add New List
         </Button>
         {this.state.add ? (
-          <ListForm addList={this.addListsButtonHandler} />
+          <ListForm addedList={this.addedList} addList={this.addListsButtonHandler} />
         ) : null}
       </>
     );

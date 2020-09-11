@@ -16,6 +16,7 @@ export default class ListForm extends Component {
         list_description.value = "";
         list_title.value = "";
       })
+      .then(this.props.addedList)
       .catch(this.context.setError);
   };
 

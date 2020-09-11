@@ -48,6 +48,7 @@ const ListApiService = {
     
     deleteList(listId) {
       return fetch(`${config.API_ENDPOINT}/lists/${listId}`, {
+        method: 'DELETE',
         headers: {
           'authorization': `bearer ${TokenService.getAuthToken()}`
         },
@@ -56,7 +57,7 @@ const ListApiService = {
         .then(res => 
            (!res.ok)
              ? res.json().then(e => Promise.reject(e))
-             : res.end()  
+             : res 
         )
     },
 
