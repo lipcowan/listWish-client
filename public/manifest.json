@@ -3,9 +3,9 @@
   "name": "Create a wishlist!",
   "icons": [
     {
-      "src": "listwishicon.png",
+      "src": "https://raw.githubusercontent.com/lipcowan/listWish-client/master/public/listwishiconNew.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "icon/ico"
     }
   ],
   "start_url": ".",
