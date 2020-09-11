@@ -12,7 +12,7 @@ export default class ListWishList extends Component {
         .then(this.props.onDelete)
       }
 
-    render() {v
+    render() {
         const { list } = this.props
 
 
