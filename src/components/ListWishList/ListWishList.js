@@ -14,7 +14,8 @@ export default class ListWishList extends Component {
         .then(this.props.onDelete)
       }
 
-    renderDeleteButton(list) {
+    renderDeleteButton = (props) => {
+        const list = this.props.list
         if (TokenService.hasAuthToken()) 
         return (<Button className='Button__DeleteList'  onClick={e => this.deleteListButtonHandler(list.id)}>Delete List</Button>) 
         else
@@ -35,7 +36,7 @@ export default class ListWishList extends Component {
                 <p className='ListWishList__description'>
                             {list.list_description}</p>
             </Link>
-            <this.renderDeleteButton list={this.props.list} />
+            <this.renderDeleteButton/>
             </div>
         )    
     }

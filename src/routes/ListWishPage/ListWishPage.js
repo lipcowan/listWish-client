@@ -45,7 +45,7 @@ export default class ListWishPage extends Component {
     ));
   }
 
-  renderAddButton() {
+  renderAddButton = () => {
     if (TokenService.hasAuthToken())
        return (
         <Button className='Button__AddList' onClick={() => this.addListButtonHandler()}>
