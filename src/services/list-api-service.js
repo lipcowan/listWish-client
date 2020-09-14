@@ -113,7 +113,22 @@ const ListApiService = {
               ? res.json().then(e => Promise.reject(e))
               : null
             )
-    }
+    },
+
+    deleteWish(wishId) {
+      return fetch(`${config.API_ENDPOINT}/wishes/${wishId}`, {
+        method: 'DELETE',
+        headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`
+        },
+      })
+      //returning 204 or 404
+        .then(res => 
+           (!res.ok)
+             ? res.json().then(e => Promise.reject(e))
+             : res 
+        )
+    },
 }
 
 export default ListApiService

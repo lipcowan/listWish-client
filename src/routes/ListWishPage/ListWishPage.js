@@ -21,6 +21,18 @@ export default class ListWishPage extends Component {
       .catch(this.context.setError);
   }
 
+  landingPageLogin = () => {
+    if (!TokenService.hasAuthToken()) 
+      return (
+        <div className='ListWishPage__Landing'>
+          <h3>Welcome to ListWish</h3>
+          <p>We've added some lists to get you started, before adding your own list or making new wishes, please Login or Create an Account</p>
+        </div>
+      )
+    else
+      return (<> </>)
+  }
+
   addListButtonHandler = () => {
     !this.state.add
       ? this.setState({ add: true })
@@ -38,7 +50,7 @@ export default class ListWishPage extends Component {
   }
   
 
-  renderLists() {
+  renderLists = () => {
     const { listWishList = [] } = this.context;
     return listWishList.map((list) => (
       <ListWishList onDelete={this.refreshLists} key={list.id} list={list} />
@@ -62,6 +74,7 @@ export default class ListWishPage extends Component {
     const { error } = this.context;
     return (
       <>
+        <this.landingPageLogin/>
         <Section list className="ListWishPage">
           {error ? (
             <p className="red">There was an error, try again</p>

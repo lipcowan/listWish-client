@@ -8,6 +8,7 @@ import { Hyph, Section, Button } from '../../components/Utils/Utils'
 export default class ListWish extends Component {
     state = {
         add: false,
+        reduce: false,
     }
 
     static defaultProps = {
@@ -36,6 +37,7 @@ export default class ListWish extends Component {
                 ? this.setState({add: true})
                 : this.setState({add: false})
     }
+
  
     renderList() {
         const { list, wishes } = this.context
@@ -43,7 +45,7 @@ export default class ListWish extends Component {
           <h2>{list.list_title}</h2>
           <p>{list.list_description}</p>
           <Hyph/>
-          <ListWishes wishes={wishes}/>
+          <ListWishes listId={list.id} wishes={wishes}/>
           <Hyph/>
           <Button onClick={() => this.addWishButtonHandler()}> + Add New Wish </Button>
           {(this.state.add) ? <WishForm addWish={this.addWishButtonHandler}/> : null }
@@ -70,11 +72,11 @@ export default class ListWish extends Component {
     }
 }
 
-function ListWishes({ wishes = []}) {
+function ListWishes({ wishes = [], listId}) {
     return (
         <ul className='ListWish__wishes'>
             {wishes.map(wish => 
-              <Wish key={wish.id} id={wish.id} title={wish.wish_title} url={wish.wish_url}/>
+              <Wish listId={listId} key={wish.id} id={wish.id} title={wish.wish_title} url={wish.wish_url}/>
             )}
         </ul>
     )
