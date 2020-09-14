@@ -25,8 +25,13 @@ export default class ListWishPage extends Component {
     if (!TokenService.hasAuthToken()) 
       return (
         <div className='ListWishPage__Landing'>
-          <h3>Welcome to ListWish</h3>
-          <p>We've added some lists to get you started, before adding your own list or making new wishes, please Login or Create an Account</p>
+          <h2 className='ListWishPage__Landing-header'>Welcome to ListWish</h2>
+          <p>We've added some lists to get you started, before adding your own list or making new wishes, please Login or Create an Account.</p>
+          <p> If you're just here to demo the app please use the credentials below:</p>
+          <ul className='ListWishPage__Landing-demo-credentials'>
+            <li>User Name: Test_User</li>
+            <li>Password: P@ssword1</li>
+          </ul>
         </div>
       )
     else

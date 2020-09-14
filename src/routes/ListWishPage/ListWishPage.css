@@ -6,13 +6,32 @@
     margin-top: 10px;
   }
 
+.ListWishPage__Landing{
+  background-color: rgba(238, 230, 255, 0.577);
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
 .ListWishPage__ButtonAndFormContainer{
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.ListWishPage__Landing-demo-credentials{
+  text-align: center;
+  list-style-type: none;
+  font-weight: 320;
+}
+
+.ListWishPage__Landing-header{
+  text-align: center;
+}
+
 .AddPlaceHolder{
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
+  background-color: rgba(31, 30, 48, 0.886);
+  color: rgb(189, 170, 228);
+  text-shadow: rgb(238, 230, 255);
 }

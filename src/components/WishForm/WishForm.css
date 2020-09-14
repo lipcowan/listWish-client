@@ -1,0 +1,14 @@
+.Button__MakeNewWish{
+    background-color: rgba(228, 228, 250, 0.831);
+    border: none;
+    color: rgb(37, 35, 58);
+    font-size: 13px;
+}
+
+.Button__ChangeWish{
+    background-color: rgba(228, 228, 250, 0.831);
+    border: none;
+    color: rgb(37, 35, 58);
+    font-size: 13px;
+    margin-bottom: 5px;
+}

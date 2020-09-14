@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ListContext from '../../contexts/ListContext'
 import ListApiService from '../../services/list-api-service'
 import { Button, Input, Required } from '../Utils/Utils'
+import './WishForm.css'
 
 
 export default class WishForm extends Component {
@@ -53,7 +54,7 @@ export default class WishForm extends Component {
                             id='WishForm__wish_url'>
                             </Input>
                         </div>
-                        <Button type='submit'>
+                        <Button className='Button__MakeNewWish' type='submit'>
                             Make a wish 
                         </Button>
                         </form>
