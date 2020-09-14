@@ -49,6 +49,8 @@ export class ListProvider extends Component {
         this.setState({list: list})
     }
 
+   
+
     setWishes = wishes => {
         this.setState({wishes: wishes})
     }

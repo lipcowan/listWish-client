@@ -19,6 +19,14 @@ export default class ListWish extends Component {
     static contextType = ListContext
 
     componentDidMount() {
+        this.getList()
+    }
+
+    componentWillUnmount() {
+        this.context.clearList()
+    }
+
+    getList = () => {
         const { listId } = this.props.match.params
         this.context.clearError()
         ListApiService.getList(listId)
@@ -28,10 +36,7 @@ export default class ListWish extends Component {
         .then(this.context.setWishes)
         .catch(this.context.setError)
     }
-
-    componentWillUnmount() {
-        this.context.clearList()
-    }
+    
 
     addWishButtonHandler = () => {
         !this.state.add
@@ -39,13 +44,29 @@ export default class ListWish extends Component {
                 : this.setState({add: false})
     }
 
+    onDelete = (wishId) => {
+        this.getList()
+         // working on removing from state/context instead of a bandwith heavy option
+    //    const { list } = this.context
+    //    this.context.setList(list.filter(listItem => wishId !== listItem.id))
+    }
+
+    ListWishes = ( wishes = [], listId) => {
+        return (
+            <ul className='ListWish__wishes'>
+                {wishes.map(wish => 
+                  <Wish onDelete={this.onDelete} listId={listId} key={wish.id} id={wish.id} title={wish.wish_title} url={wish.wish_url}/>
+                )}
+            </ul>
+        )
+    }
  
     renderList() {
         const { list, wishes } = this.context
         return <>
           <h2>{list.list_title}</h2>
           <p>{list.list_description}</p>
-          <ListWishes listId={list.id} wishes={wishes}/>
+          {this.ListWishes(wishes, list.id)}
           <Button className='Button__AddWish' onClick={() => this.addWishButtonHandler()}> + Add New Wish </Button>
           {(this.state.add) ? <WishForm addWish={this.addWishButtonHandler}/> : null }
         </>
@@ -69,14 +90,4 @@ export default class ListWish extends Component {
             </Section>
         )
     }
-}
-
-function ListWishes({ wishes = [], listId}) {
-    return (
-        <ul className='ListWish__wishes'>
-            {wishes.map(wish => 
-              <Wish listId={listId} key={wish.id} id={wish.id} title={wish.wish_title} url={wish.wish_url}/>
-            )}
-        </ul>
-    )
 }

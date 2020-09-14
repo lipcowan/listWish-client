@@ -20,7 +20,7 @@ export default class Wish extends Component {
 
     deleteWishButtonHandler = (wishId) => {
         ListApiService.deleteWish(wishId)
-        .then(this.props.onDelete)
+        this.props.onDelete(wishId)
     }
 
     
