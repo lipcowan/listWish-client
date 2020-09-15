@@ -18,7 +18,7 @@ Some lists and wishes have been added to get you started, to practice using the 
 ## Current Features
 
 ### Register Account
-![Registration Page](https://raw.githubusercontent.com/lipcowan/listWish-client/master/public/screenshots/registerAccount.png)
+![Registration Page](public/screenshots/registerAccount.png)
 
 ### Login
 ![Login Page](public/screenshots/loginDemo.png)
