@@ -9,12 +9,15 @@
 #### Version 1 is currently deployed with the ability to add new lists and new items (wishes) to those lists.
 
 ### Register Account
+![Registration Page](https://raw.githubusercontent.com/lipcowan/listWish-client/master/public/screenshots/registerAccount.png)
 
 ### Login
 
-### Add New List
+### View Lists
 
-### Delete List
+#### Add New List
+
+#### Delete List
 
 ### View List and Wishes
 
