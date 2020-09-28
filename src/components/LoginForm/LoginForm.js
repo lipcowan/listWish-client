@@ -52,8 +52,10 @@ export default class LoginForm extends Component {
                   </Input>
               </div>
               <div className='password'>
+                  <p>Password must be between 8-74 characters and contain at least one of each \
+                    - upper case letter, lower case letter, number, and special character</p>
                   <label htmlFor='LoginForm__password'>
-                      Password
+                      Password 
                   </label>
                   <Input
                     required
