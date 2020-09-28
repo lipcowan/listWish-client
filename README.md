@@ -59,6 +59,15 @@ Select the delete wish button.
 
 - Follow org's lists
 
+---
+### Technologies 
+
+* React (with ReactDOM and ReactRouterDom)
+* HTML 5
+* CSS3
+* Jest/Enzyme
+
+---
 ##### Contact Me
 
 Have any questions or recommendations?
